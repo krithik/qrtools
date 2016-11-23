@@ -207,10 +207,9 @@ class QR(object):
 
         # initiate scanning
         proc.active = True
-        try:
-            proc.user_wait()
-        except zbar.WindowClosed:
-            pass
+
+        # process one image and exit, otherwise wait indefinetely
+        proc.process_one()
 
     def destroy(self):
         shutil.rmtree(self.directory)

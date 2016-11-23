@@ -41,6 +41,9 @@ qr = qrtools.QR()
 qr.decode("bookmark.png")
 print qr.data
 ```
+And here is the `bookmark.png`:
+![](https://github.com/primetang/qrtools/blob/master/samples/bookmark.png)
+
 If you are using a webcam: 
 ```
 import qrtools
@@ -48,6 +51,3 @@ qr = qrtools.QR()
 qr.decode_webcam()
 print qr.data
 ```
-
-And here is the `bookmark.png`:
-![](https://github.com/primetang/qrtools/blob/master/samples/bookmark.png)

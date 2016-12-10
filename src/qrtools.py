@@ -27,9 +27,9 @@ import shutil
 import hashlib
 import zbar
 try:
-    from PIL import Image
-except:
     import Image
+except:
+    from PIL import Image
 import re
 from codecs import BOM_UTF8
 
@@ -161,10 +161,7 @@ class QR(object):
             # obtain image data
             pil = Image.open(self.filename).convert('L')
             width, height = pil.size
-            try:
-                raw = pil.tobytes()
-            except AttributeError:
-                raw = pil.tostring()
+            raw = pil.tobytes()
             # wrap image data
             image = zbar.Image(width, height, 'Y800', raw)
             # scan the image for barcodes
@@ -210,10 +207,9 @@ class QR(object):
 
         # initiate scanning
         proc.active = True
-        try:
-            proc.user_wait()
-        except zbar.WindowClosed:
-            pass
+
+        # process one image and exit, otherwise wait indefinetely
+        proc.process_one()
 
     def destroy(self):
         shutil.rmtree(self.directory)
